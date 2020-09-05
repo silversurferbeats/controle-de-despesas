@@ -11,14 +11,11 @@ const inputTransactionAmount = document.querySelector("#amount")
 
 
 /*** TRANSACCIONES*/
-/**
+
 let dummyTransactions = [
-    {id: 1, name: "bolo de brigadeiro", amount: -20},
-    {id: 2, name: "salario", amount: 300},
-    {id: 3, name: "torta de frango", amount: -10},
-    {id: 4, name: "violao", amount: 150}
+    
 ]
-*/
+
 
 
 /**LOCALSTORAGE */
@@ -34,7 +31,7 @@ let transactions = localStorage
 /**FUNCION PARA ELIMINAR LA TRANSACCION CON "X" */
 
 const removeTransaction = ID => {
-    transactions = transactions.filter(transaction => 
+    dummyTransactions = dummyTransactions.filter(transaction => 
         transaction.id !== ID)
     updateLocalStorage ()
     init ()
