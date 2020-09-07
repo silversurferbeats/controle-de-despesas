@@ -10,30 +10,32 @@ const inputTransactionAmount = document.querySelector("#amount")
 
 
 
-/*** TRANSACCIONES*/
-
-let dummyTransactions = [
-    
+/*** TRANSACCIONES
+ 
+ let transacciones = [
+     
 ]
 
+*/
 
-
+/********************************************* */
 /**LOCALSTORAGE */
 
-const localStorageTransactions = JSON.parse(localStorage
-    .getItem('transactions'))
+const localStorageTransaccions = JSON.parse (localStorage
+    .getItem ('transacciones')) 
+let transacciones =  localStorage
+    .getItem ('transacciones') !== null ? localStorageTransaccions : []
+ 
 
-let transactions = localStorage 
-    .getItem ('transactions') !== null ? localStorageTransactions : []  
-
+/*********************************** */
 
 
 /**FUNCION PARA ELIMINAR LA TRANSACCION CON "X" */
 
 const removeTransaction = ID => {
-    dummyTransactions = dummyTransactions.filter(transaction => 
+    transacciones = transacciones.filter(transaction => 
         transaction.id !== ID)
-    updateLocalStorage ()
+    updateLocalStorage()
     init ()
 }
 
@@ -58,7 +60,7 @@ const addTransactionsIntoDOM = transaction => {
 
 
 const updateBalanceValues = () => {
-    const transactionAmounts = dummyTransactions
+    const transactionAmounts = transacciones
         .map(transaction => transaction.amount)
     const total  = transactionAmounts
         .reduce((accumulator, transaction) => accumulator + transaction, 0)
@@ -83,10 +85,10 @@ const updateBalanceValues = () => {
 
 const init = () => {
     transactionsUl.innerHTML = ''
-    dummyTransactions.forEach (addTransactionsIntoDOM)
+    transacciones.forEach (addTransactionsIntoDOM)
     updateBalanceValues()
 }
-
+/******************************************************************* */
 /** invoco evento para adicionar transaccion */
 
 
@@ -94,7 +96,7 @@ init()
 
 /* TRANSACCION AL LOCALSTORAGE */
 const updateLocalStorage = () => {
-    localStorage.setItem ('transactions', JSON.stringify(transactions))
+    localStorage.setItem ('transactions', JSON.stringify(transacciones))
 
 }
 
@@ -128,7 +130,7 @@ form.addEventListener ('submit', event => {
     }
 
 
-    dummyTransactions.push(transaction)
+    transacciones.push(transaction)
     init()
     updateLocalStorage()
 
